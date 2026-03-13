@@ -6,7 +6,7 @@ from googleapiclient.discovery import build
 from googleapiclient.errors import HttpError
 from langchain_core.tools import tool
 
-from auth import check_auth
+from auth import get_calendar_creds
 from util import parse_date_string
 
 
@@ -63,7 +63,7 @@ def create_event(event_data: Dict[str, Any]) -> Dict[str, Any]:
                 'details': {additional error info if available}
             }
     """
-    creds = check_auth()
+    creds = get_calendar_creds()
 
     if(creds is None):
         return {"Proper credentials not found. Please authenticate first.":"Error"}

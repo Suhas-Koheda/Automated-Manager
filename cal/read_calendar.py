@@ -4,7 +4,7 @@ from langchain_core.tools import tool
 from googleapiclient.discovery import build
 
 from util import parse_date_string
-from auth import check_auth
+from auth import get_calendar_creds
 
 @tool
 def read_calendar(date_str: str) -> list:
@@ -14,7 +14,7 @@ def read_calendar(date_str: str) -> list:
     except Exception as e:
         return [{"error": f"Invalid date format: {str(e)}. Use YYYY-MM-DD/before=X/after=Y"}]
 
-    creds = check_auth()
+    creds = get_calendar_creds()
 
     if creds is None:
         return ["Proper credentials not found. Please authenticate first."]

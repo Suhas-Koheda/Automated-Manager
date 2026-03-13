@@ -1,3 +1,13 @@
+# OAuth credentials & cached tokens — never commit these!
 credentials.json
 token.json
-__pycache__/logger.cpython-313.pyc
+mail_credentials.json
+mail_token.json
+cal_credentials.json
+cal_token.json
+
+# Python cache
+__pycache__/
+*.pyc
+*.pyo
+.env

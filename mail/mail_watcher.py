@@ -3,9 +3,9 @@ import time
 from googleapiclient.discovery import build
 from googleapiclient.errors import HttpError
 
-from auth import check_auth
+from auth import get_mail_creds
 from mail.mail_callback import email_callback
-from mail.util import get_sender,get_simple_email_body
+from mail.util import get_sender, get_simple_email_body
 
 
 def watch_gmail(callback, check_interval=10):
@@ -17,7 +17,7 @@ def watch_gmail(callback, check_interval=10):
                             Receives list of email dictionaries with sender and body.
         check_interval (int): How often to check for new emails (in seconds).
     """
-    creds = check_auth()
+    creds = get_mail_creds()
     service = build('gmail', 'v1', credentials=creds)
 
     # Get the initial history ID by getting the most recent message
