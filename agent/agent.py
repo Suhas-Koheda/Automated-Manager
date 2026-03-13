@@ -7,7 +7,7 @@ from cal.read_calendar import read_calendar
 
 tools=[create_event, read_calendar]
 
-llm=ChatGoogleGenerativeAI(model="gemini-1.5-flash", temperature=0.2, max_output_tokens=1000)
+llm=ChatGoogleGenerativeAI(model="gemini-2.5-flash", temperature=0.2, max_output_tokens=1000)
 
 prompt = ChatPromptTemplate.from_messages([
     ("system", "You are a helpful assistant that reads the mail and adds the event to the cal  "
